@@ -28,15 +28,15 @@ class Grid(object):
         for i in range(4):
             self.matrix[i][nth] = column[i]
 
-    def insert_random_num():
-        x = randint(0, 4)
-        y = randint(0, 4)
+    def insert_random_num(self):
+        x = randint(0, 3)
+        y = randint(0, 3)
 
         while not self.matrix[y][x] == 0:
-            x = randint(0, 4)
-            y = randint(0, 4)
+            x = randint(0, 3)
+            y = randint(0, 3)
 
-        self.matrix[y][x] == 2
+        self.matrix[y][x] = 2
 
     def slide(self, direction):
         ''' u for up, r for right, l for left, d for down '''
@@ -61,6 +61,7 @@ class Grid(object):
                 row = self.shift_left(row)
                 self.matrix[i] = row
 
+        self.insert_random_num()
         self.grid_view.layoutMatrix(self.matrix)
 
     def shift_left(self, array):
