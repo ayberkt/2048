@@ -23,7 +23,10 @@ class GridView(tk.Frame):
         for i in range(4):
             for j in range(4):
                 current_rect = self.rects[i][j]
-                text_ID = self.canvas.create_text(current_rect[0], current_rect[1], text=str(matrix[j][i]))
+                currrent_cell = matrix[j][i]
+                if currrent_cell == 0:
+                    currrent_cell = ""
+                text_ID = self.canvas.create_text(current_rect[0], current_rect[1], text=currrent_cell)
                 self.text_IDs.append(text_ID)
 
 
