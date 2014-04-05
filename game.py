@@ -5,9 +5,6 @@ from view import GridView
 class Grid(object):
 
     def __init__(self):
-        # empty_array = [0, 0, 0, 0]
-        # self.matrix = [empty_array] * 4  # Array of four empty arrays.
-
         self.matrix = [[2, 0, 2, 0]]
         self.matrix.append([0, 0, 0, 8])
         self.matrix.append([0, 2, 0, 0])
@@ -18,7 +15,6 @@ class Grid(object):
         self.grid_view = GridView(self)
         self.grid_view.initUI(self.matrix)
         self.grid_view.mainloop()
-        # self.grid_view.layoutMatrix(self.matrix)
 
     def get_column(self, nth):
         column = []
@@ -118,7 +114,5 @@ class Grid(object):
         return matrix_str
 
 
-
 if __name__ == "__main__":
     game_grid = Grid()
-        
