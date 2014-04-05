@@ -13,6 +13,8 @@ class Grid(object):
         self.matrix.append([0, 2, 0, 0])
         self.matrix.append([0, 0, 2, 4])
 
+        self.score = 0
+
         self.grid_view = GridView(self)
         self.grid_view.initUI(self.matrix)
         self.grid_view.mainloop()
@@ -61,6 +63,7 @@ class Grid(object):
                 row = self.shift_left(row)
                 self.matrix[i] = row
 
+        print self.score
         self.insert_random_num()
         self.grid_view.layoutMatrix(self.matrix)
 
@@ -74,6 +77,7 @@ class Grid(object):
         for index in range(1, len(array)):
             if array[index - 1] == array[index]:
                 array[index - 1] += array[index]
+                self.score += array[index - 1]
                 array[index] = 0
         array = filter(lambda x: x != 0, array)
 
@@ -92,6 +96,7 @@ class Grid(object):
         for index in range(1, len(array)):
             if array[index - 1] == array[index]:
                 array[index - 1] += array[index]
+                self.score += array[index - 1]
                 array[index] = 0
         array = filter(lambda x: x != 0, array)
 
