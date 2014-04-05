@@ -5,10 +5,10 @@ from view import GridView
 class Grid(object):
 
     def __init__(self):
-        self.matrix = [[2, 0, 2, 0]]
-        self.matrix.append([0, 0, 0, 8])
-        self.matrix.append([0, 2, 0, 0])
-        self.matrix.append([0, 0, 2, 4])
+        self.matrix = [ [2, 0, 2, 0],
+                        [0, 0, 0, 8],
+                        [0, 2, 0, 0],
+                        [0, 0, 2, 4]]
 
         self.score = 0
 
