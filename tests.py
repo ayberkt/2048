@@ -1,4 +1,4 @@
-from game import Grid()
+from game import Grid
 
 def test_shift_left():
     grid = Grid()
@@ -17,7 +17,7 @@ def test_shift_left():
     assert(grid.shift_left([2, 2, 0, 2]) == [4, 2, 0, 0])
     assert(grid.shift_left([2, 2, 4, 4]) == [4, 8, 0, 0])
     assert(grid.shift_left([8, 8, 4, 2]) == [16, 4, 2, 0])
-
+    print "Left tests passed."
 
 def test_shift_right():
     grid = Grid()
@@ -33,3 +33,8 @@ def test_shift_right():
     assert(grid.shift_right([2, 2, 0, 2]) == [0, 0, 2, 4])
     assert(grid.shift_right([2, 2, 4, 4]) == [0, 0, 4, 8])
     assert(grid.shift_right([8, 8, 4, 2]) == [0, 16, 4, 2])
+    print "Right tests passed."
+
+if __name__=="__main__":
+    test_shift_left()
+    test_shift_right()

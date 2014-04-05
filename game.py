@@ -82,22 +82,7 @@ class Grid(object):
         return array
 
     def shift_right(self, array):
-        if sum(array) == 0:
-            return array
-
-        array = array[::-1]
-
-        array = filter(lambda x: x != 0, array)
-
-        for index in range(1, len(array)):
-            if array[index - 1] == array[index]:
-                array[index - 1] += array[index]
-                self.score += array[index - 1]
-                array[index] = 0
-        array = filter(lambda x: x != 0, array)
-
-        while len(array) < 4:
-            array.append(0)
+        array = self.shift_left(array[::-1])
         return array[::-1]
 
     def matrix_str(self):
