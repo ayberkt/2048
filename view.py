@@ -17,7 +17,7 @@ class GridView(tk.Frame):
         for i in range(4):
             for j in range(4):
                 current_rect = self.rects[i][j]
-                self.canvas.create_text(current_rect[0], current_rect[1], text=str(matrix[i][j]))
+                self.canvas.create_text(current_rect[0], current_rect[1], text=str(matrix[j][i]))
 
     def initUI(self, matrix):
         self.master = tk.Tk()
