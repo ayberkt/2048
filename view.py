@@ -18,8 +18,7 @@ def initUI():
     for i in range(4):
         for j in range(4):
             rect = w.create_rectangle(SIDE * j, 0, SIDE * (j + 1), SIDE * (i + 1))
-    
-    mainloop()
+            w.create_text(SIDE * i + 50, SIDE * j + 50, text=str(i + 1) + ", " + str(j + 1))
 
 
 # def layoutMatrix(matrix):
@@ -27,3 +26,4 @@ def initUI():
 #         for cell in row:
 
 initUI()
+mainloop()
