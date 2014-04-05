@@ -9,15 +9,23 @@ class GridView(tk.Frame):
         self.master.bind("<a>", self.callback)
         self.master.bind("<s>", self.callback)
         self.master.bind("<d>", self.callback)
+
+        self.text_IDs = []
         self.SIDE = 100
         self.canvas = tk.Canvas(master, width=self.SIDE * 4, height=self.SIDE * 4)
+        self.canvas.pack()
         # self.initUI()
 
     def layoutMatrix(self, matrix):
+        for ID in self.text_IDs:
+            self.canvas.delete(ID)
+        self.text_IDs = []
         for i in range(4):
             for j in range(4):
                 current_rect = self.rects[i][j]
-                self.canvas.create_text(current_rect[0], current_rect[1], text=str(matrix[j][i]))
+                text_ID = self.canvas.create_text(current_rect[0], current_rect[1], text=str(matrix[j][i]))
+                self.text_IDs.append(text_ID)
+
 
     def initUI(self, matrix):
         self.master = tk.Tk()
