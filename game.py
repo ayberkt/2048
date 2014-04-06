@@ -12,6 +12,7 @@ class Grid(object):
 
         self.score = 0
 
+        print "Play with WASD!"
         self.grid_view = GridView(self)
         self.grid_view.initUI(self.matrix)
         self.grid_view.mainloop()
@@ -82,6 +83,9 @@ class Grid(object):
         return array
 
     def shift_right(self, array):
+        # If left shift is applied to the reversed
+        # array and then the output is reversed again
+        # we get a right shift.
         array = self.shift_left(array[::-1])
         return array[::-1]
 
