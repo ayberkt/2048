@@ -60,7 +60,7 @@ class Grid(object):
                 row = self.shift_left(row)
                 self.matrix[i] = row
 
-        print self.score
+        print "Score: " + str(self.score)
         self.insert_random_num()
         self.grid_view.layoutMatrix(self.matrix)
 
