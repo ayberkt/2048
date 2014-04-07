@@ -13,6 +13,8 @@ class Grid(object):
         self.score = 0
 
         print "Play with WASD!"
+
+    def begin(self):
         self.grid_view = GridView(self)
         self.grid_view.initUI(self.matrix)
         self.grid_view.mainloop()
@@ -105,3 +107,4 @@ class Grid(object):
 
 if __name__ == "__main__":
     game_grid = Grid()
+    game_grid.begin()

@@ -6,6 +6,7 @@ class GridView(tk.Frame):
     def __init__(self, grid, master=None):
         tk.Frame.__init__(self, master)
         self.grid = grid
+        
         self.master.bind("<w>", self.callback)
         self.master.bind("<a>", self.callback)
         self.master.bind("<s>", self.callback)
