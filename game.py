@@ -43,10 +43,15 @@ class Grid(object):
 
         self.matrix[y][x] = 2
 
+    def control_state(self):
+        print "Score: " + str(self.score)
+        self.insert_random_num()
+        self.grid_view.layoutMatrix(self.matrix)
+
     def slide(self, direction):
         ''' Apply the corresponding shift to a column or row.
         Columns are treated as rows thus sliding a row up is
-        same as shifting it left. 
+        same as shifting it left.
         u for up, r for right, l for left, d for down '''
         if direction == "up":
             for i in range(4):
@@ -68,13 +73,10 @@ class Grid(object):
                 row = self.matrix[i]
                 row = self.shift_left(row)
                 self.matrix[i] = row
-
-        print "Score: " + str(self.score)
-        self.insert_random_num()
-        self.grid_view.layoutMatrix(self.matrix)
+        self.check_state()
 
     def shift_left(self, array):
-        '''Shift a list left. If the input list is [2, 2, 4, 8]
+        '''Shift a array left. If the input array is [2, 2, 4, 8]
         it would be equal to [4, 4, 8] after a left-shift is applied.'''
         if sum(array) == 0:
             return array
