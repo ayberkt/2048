@@ -18,7 +18,7 @@ class GridView(tk.Frame):
             master, width=self.SIDE * 4, height=self.SIDE * 4)
         self.canvas.pack()
 
-    def layoutMatrix(self, matrix):
+    def layout_matrix(self, matrix):
         for ID in self.text_IDs:
             self.canvas.delete(ID)
         self.text_IDs = []
@@ -47,7 +47,7 @@ class GridView(tk.Frame):
                 row.append([self.SIDE * i + 50, self.SIDE * j + 50])
             self.rects.append(row)
 
-        self.layoutMatrix(matrix)
+        self.layout_matrix(matrix)
 
     def callback(self, event):
         if event.char == "w":

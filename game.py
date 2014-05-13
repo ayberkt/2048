@@ -46,7 +46,7 @@ class Grid(object):
     def control_state(self):
         print "Score: " + str(self.score)
         self.insert_random_num()
-        self.grid_view.layoutMatrix(self.matrix)
+        self.grid_view.layout_matrix(self.matrix)
 
     def slide(self, direction):
         ''' Apply the corresponding shift to a column or row.
@@ -56,30 +56,36 @@ class Grid(object):
         if direction == "up":
             for i in range(4):
                 column = self.get_column(i)
-                column = self.shift_left(column)
+                column = self.shift(column, "left")
                 self.set_column(i, column)
         elif direction == "right":
             for i in range(4):
                 row = self.matrix[i]
-                row = self.shift_right(row)
+                row = self.shift(row, "right")
                 self.matrix[i] = row
         elif direction == "down":
             for i in range(4):
                 column = self.get_column(i)
-                column = self.shift_right(column)
+                column = self.shift(column, "right")
                 self.set_column(i, column)
         elif direction == "left":
             for i in range(4):
                 row = self.matrix[i]
-                row = self.shift_left(row)
+                row = self.shift(row, "left")
                 self.matrix[i] = row
-        self.check_state()
+        self.control_state()
 
-    def shift_left(self, array):
-        '''Shift a array left. If the input array is [2, 2, 4, 8]
-        it would be equal to [4, 4, 8] after a left-shift is applied.'''
-        if sum(array) == 0:
-            return array
+    def shift(self, array, direction):
+        '''Shift an array left or right specified with the "direction" arg.
+        If the input array is [2, 2, 4, 8] the result would be equal 
+        to [4, 4, 8] after a left-shift is applied.'''
+
+        # Direction should be specified as either left or right.
+        assert(direction == 'left' or direction == 'right')
+
+        if sum(array) == 0: return array
+
+        if direction == 'right': array = array[::-1]
 
         array = filter(lambda x: x != 0, array)
 
@@ -92,14 +98,10 @@ class Grid(object):
 
         while len(array) < 4:
             array.append(0)
-        return array
 
-    def shift_right(self, array):
-        '''If left shift is applied to the reversed
-        array and then the output is reversed again
-        we get a right shift.'''
-        array = self.shift_left(array[::-1])
-        return array[::-1]
+        if direction == 'left': return array
+        
+        if direction == 'right': return array[::-1]
 
     def matrix_str(self):
         '''Create a string representation of the matrix
