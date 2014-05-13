@@ -7,10 +7,9 @@ class GridView(tk.Frame):
         tk.Frame.__init__(self, master)
         self.grid = grid
         
-        self.master.bind("<w>", self.callback)
-        self.master.bind("<a>", self.callback)
-        self.master.bind("<s>", self.callback)
-        self.master.bind("<d>", self.callback)
+        # Bind keys.
+        for key in "<w>", "<a>", "<s>", "<d>":
+            self.master.bind(key, self.callback)
 
         self.text_IDs = []
         self.SIDE = 100
@@ -19,6 +18,8 @@ class GridView(tk.Frame):
         self.canvas.pack()
 
     def layout_matrix(self, matrix):
+        '''Layout the internal representation of
+         the grid to grid view.'''
         for ID in self.text_IDs:
             self.canvas.delete(ID)
         self.text_IDs = []
@@ -33,23 +34,28 @@ class GridView(tk.Frame):
                 self.text_IDs.append(text_ID)
 
     def initUI(self, matrix):
+        '''Handle initial drawing of the grid view.'''
         self.master = tk.Tk()
         self.master.title("2048")
         self.SIDE = 100
         self.canvas.pack()
 
         self.rects = []
-        for i in range(4):
+        for row_index in range(4):
             row = []
-            for j in range(4):
-                self.canvas.create_rectangle(
-                    self.SIDE * j, 0, self.SIDE * (j + 1), self.SIDE * (i + 1))
-                row.append([self.SIDE * i + 50, self.SIDE * j + 50])
+            for cell_index in range(4):
+                self.canvas.create_rectangle(self.SIDE * cell_index, 
+                                            0, 
+                                            self.SIDE * (cell_index + 1),
+                                            self.SIDE * (row_index + 1))
+                row.append([self.SIDE * row_index + 50, self.SIDE * cell_index + 50])
             self.rects.append(row)
 
         self.layout_matrix(matrix)
 
     def callback(self, event):
+        '''Callback the grid object with respect 
+        to the key pressed'''
         if event.char == "w":
             self.grid.slide("up")
         elif event.char == "a":
@@ -58,14 +64,3 @@ class GridView(tk.Frame):
             self.grid.slide("down")
         elif event.char == "d":
             self.grid.slide("right")
-
-if __name__ == "__main__":
-    grid_view = GridView()
-
-    matrix = [[0, 0, 0, 0],
-              [0, 0, 2, 2],
-              [0, 0, 0, 0],
-              [4, 0, 0, 0]]
-
-    grid_view.initUI(matrix)
-    grid_view.mainloop()
