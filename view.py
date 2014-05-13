@@ -51,13 +51,13 @@ class GridView(tk.Frame):
 
     def callback(self, event):
         if event.char == "w":
-            self.grid.slide("u")
-        if event.char == "a":
-            self.grid.slide("l")
-        if event.char == "s":
-            self.grid.slide("d")
-        if event.char == "d":
-            self.grid.slide("r")
+            self.grid.slide("up")
+        elif event.char == "a":
+            self.grid.slide("left")
+        elif event.char == "s":
+            self.grid.slide("down")
+        elif event.char == "d":
+            self.grid.slide("right")
 
 if __name__ == "__main__":
     grid_view = GridView()

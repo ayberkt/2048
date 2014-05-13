@@ -48,22 +48,22 @@ class Grid(object):
         Columns are treated as rows thus sliding a row up is
         same as shifting it left. 
         u for up, r for right, l for left, d for down '''
-        if direction == "u":
+        if direction == "up":
             for i in range(4):
                 column = self.get_column(i)
                 column = self.shift_left(column)
                 self.set_column(i, column)
-        elif direction == "r":
+        elif direction == "right":
             for i in range(4):
                 row = self.matrix[i]
                 row = self.shift_right(row)
                 self.matrix[i] = row
-        elif direction == "d":
+        elif direction == "down":
             for i in range(4):
                 column = self.get_column(i)
                 column = self.shift_right(column)
                 self.set_column(i, column)
-        elif direction == "l":
+        elif direction == "left":
             for i in range(4):
                 row = self.matrix[i]
                 row = self.shift_left(row)
