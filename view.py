@@ -23,6 +23,7 @@ class GridView(tk.Frame):
         for ID in self.text_IDs:
             self.canvas.delete(ID)
         self.text_IDs = []
+        
         for i in range(4):
             for j in range(4):
                 current_rect = self.rects[i][j]
